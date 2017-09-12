@@ -1,0 +1,56 @@
+@CHARSET "ISO-8859-1";
+.input{
+height: 35px;	
+width: 225px;	
+background-color: #EFEFEF;
+color: #4C4C4C;	
+font-family: Arial;	
+font-size: 14px;	
+line-height: 18px;
+padding-left:13px;
+margin-left:20px;
+}
+.inputinterval{
+height: 35px;	
+width: 225px;	
+background-color: #EFEFEF;
+color: #4C4C4C;	
+font-family: Arial;	
+font-size: 14px;	
+line-height: 18px;
+padding-left:13px;
+margin-left:52px;
+}
+.inputstartindex{
+height: 35px;	
+width: 225px;	
+background-color: #EFEFEF;
+color: #4C4C4C;	
+font-family: Arial;	
+font-size: 14px;	
+line-height: 18px;
+padding-left:13px;
+margin-left:38px;
+}
+.submit{
+height: 35px;	
+width: 100px;	
+background-color: #1c61a6;
+color: #f7f7f8;	
+font-family: Arial;	
+font-size: 20px;	
+line-height: 18px;
+padding-left:13px;
+margin-left:130px;
+}
+.submitfibonacci{
+height: 35px;	
+width: 100px;	
+background-color: #1c61a6;
+color: #f7f7f8;	
+font-family: Arial;	
+font-size: 20px;	
+line-height: 18px;
+padding-left:13px;
+margin-left:50px;
+}

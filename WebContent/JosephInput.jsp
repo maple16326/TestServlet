@@ -10,9 +10,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form  action="one" name=”form1” method="get">
-Input fibonacci length:<input type="text" name="fibonaccilength" class="input">
-<input type="submit" value="submit" class="submitfibonacci">
+<form  action="josephservlet" name=”form2” method="post">
+Input string array:<input type="text" name="josephString" class="input"><br><br>
+Input Interval:<input type="text" name="josephInterval" class="inputinterval"><br><br>
+Input StartIndex:<input type="text" name="startIndex" class="inputstartindex"><br><br>
+<input type="submit" value="submit" class="submit">
 </form>
 </body>
 </html>

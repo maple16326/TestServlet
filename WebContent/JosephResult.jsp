@@ -4,15 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<style type="text/css">
-@import url('input.css');
-</style>
 <title>Insert title here</title>
 </head>
 <body>
-<form  action="one" name=”form1” method="get">
-Input fibonacci length:<input type="text" name="fibonaccilength" class="input">
-<input type="submit" value="submit" class="submitfibonacci">
-</form>
+<p style=" font-family: Verdana, Arial;margin-left:35px;color:black;font-weight:bold">
+    <%
+        String lastPeople = (String)request.getAttribute("lastPeople");
+        out.println("The last people is:"+lastPeople);
+     
+    %>
+    </p>
 </body>
 </html>

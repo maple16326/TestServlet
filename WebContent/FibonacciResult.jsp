@@ -9,11 +9,10 @@
 <title>Insert title here</title>
 </head>
 <body>
- <p>
+ <p style=" font-family: Verdana, Arial;margin-left:35px;color:black;font-weight:bold">
     <%
         List fiboList = (List)request.getAttribute("fibolist");
-        out.println(fiboList);
-     
+        out.println("The Fibonacci Sequence is:"+fiboList);  
     %>
     </p>
 
