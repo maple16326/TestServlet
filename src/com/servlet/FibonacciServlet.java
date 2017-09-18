@@ -1,6 +1,7 @@
 package com.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 
 import org.apache.log4j.PropertyConfigurator;
 
@@ -23,15 +23,15 @@ import mypackage.Test;
  * Servlet implementation class TestServlet
  */
 @WebServlet("/TestServlet")
-public class TestServlet extends HttpServlet {
+public class FibonacciServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public TestServlet() {
+	public FibonacciServlet() {
 		super();
-		// TODO Auto-generated constructor stub
+	
 	}
 
 	/**
@@ -40,16 +40,27 @@ public class TestServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 " +
+				"Transitional//EN\">\n" +
+				"<HTML>\n" +
+				"<HEAD><TITLE>Febonacci Sequence</TITLE></HEAD>\n" +
+				"<BODY>\n" +
+				"<H1>Fibonacci Sequence:</H1>\n" +
+				"</BODY></HTML>");	
 		String fibonaccilength = request.getParameter("fibonaccilength");
 		long fibolength = Long.parseLong(fibonaccilength);
-		request.setAttribute("fibonaccilength", fibonaccilength);
 		Fibonacci1 fibo = new Fibonacci1();
-		List fibolist = fibo.fibonacci(fibolength);
-		request.setAttribute("fibolist", fibolist);// 设置到req中,key-->value
-		request.getRequestDispatcher("/FibonacciResult.jsp").forward(request, response);
-
+		List<Long> fibolist  = fibo.fibonacci(fibolength);
+		out.println("<ul></ul>");
+		for (int i = 0; i < fibolist.size(); i++) {
+			out.println("<li>");
+			out.println(fibolist.get(i));
+			out.println("</li>");
+		}
+	            
 	}
 
 	/**
@@ -58,7 +69,7 @@ public class TestServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		doGet(request, response);
 	}
 

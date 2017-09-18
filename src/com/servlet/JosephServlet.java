@@ -1,6 +1,7 @@
 package com.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -24,15 +25,15 @@ public class JosephServlet extends HttpServlet {
      */
     public JosephServlet() {
         super();
-        // TODO Auto-generated constructor stub
+    
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		
 	}
 
 	/**
@@ -41,8 +42,6 @@ public class JosephServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		doGet(request, response);
-
-		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		String peoples;
 		String interval;
@@ -56,20 +55,27 @@ public class JosephServlet extends HttpServlet {
 		intervals=Integer.parseInt(interval);
 		startNo=request.getParameter("startIndex");
 		startIndex=Integer.parseInt(startNo);
-		request.setAttribute("josephString", peoples);
-		request.setAttribute("josephInterval", interval);
-		request.setAttribute("startIndex", startNo);
 		Joseph1 joseph = new Joseph1();
 		String lastPeople = null;
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 " +
+				"Transitional//EN\">\n" +
+				"<HTML>\n" +
+				"<HEAD><TITLE>Joseph Problem</TITLE></HEAD>\n" +
+				"<BODY>\n" +
+				"<H3>Joseph Problem:"+"Pelples:"+peoples+"</H3>\n" +
+				"<H3>"+"interval:"+intervals+"</H3>\n" +
+				"<H3>"+"startIndex:"+startIndex+"</H3>\n" +
+				"</BODY></HTML>");	
 		try {
 			lastPeople = joseph.joseph(peopleArray, intervals, startIndex);
+			out.println("</p>The last people is:"+lastPeople+"</p>");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		}
-		request.setAttribute("lastPeople", lastPeople);// 设置到req中,key-->value
-		request.getRequestDispatcher("/JosephResult.jsp").forward(request, response);
-
+		
 	
 		
 		

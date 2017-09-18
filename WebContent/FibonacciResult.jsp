@@ -15,6 +15,5 @@
         out.println("The Fibonacci Sequence is:"+fiboList);  
     %>
     </p>
-
 </body>
 </html>

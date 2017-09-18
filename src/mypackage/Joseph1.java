@@ -112,7 +112,8 @@ public class Joseph1 implements Problem {
 		} else if (interval <= 0) {
 			throw new IllegalArgumentException(
 					"The interval must be greater than 0 ");
-		} else {
+		}
+		else {
 			throw new IllegalArgumentException(
 					"The startNo must be greater than or equal to 0");
 		}
