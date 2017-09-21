@@ -1,4 +1,4 @@
-package mypackage;
+package com.accenture.service;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.Iterator;

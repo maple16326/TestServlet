@@ -1,4 +1,4 @@
-package mypackage;
+package com.accenture.service;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -19,11 +19,11 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-import xml.JosephProblemRequest;
-import xml.JosephProblemResponse;
-
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+
+import com.accenture.xml.JosephProblemRequest;
+import com.accenture.xml.JosephProblemResponse;
 
 public class Joseph1 implements Problem {
 	private static final Logger LOGGER = Logger.getLogger(Joseph1.class);

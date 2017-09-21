@@ -1,4 +1,4 @@
-package com.servlet;
+package com.accenture.myservlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mypackage.Fibonacci1;
-import mypackage.Joseph1;
+import com.accenture.service.Fibonacci1;
+import com.accenture.service.Joseph1;
 
 /**
  * Servlet implementation class JosephServlet

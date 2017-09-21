@@ -1,4 +1,4 @@
-package com.servlet;
+package com.accenture.myservlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.PropertyConfigurator;
 
-import mypackage.Fibonacci1;
-import mypackage.Joseph1;
-import mypackage.Problem;
-import mypackage.PropertyTest;
-import mypackage.Test;
+import com.accenture.service.Fibonacci1;
+import com.accenture.service.Joseph1;
+import com.accenture.service.Problem;
+import com.accenture.service.PropertyTest;
+import com.accenture.service.Test;
 
 /**
  * Servlet implementation class TestServlet

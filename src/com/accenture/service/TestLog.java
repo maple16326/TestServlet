@@ -1,4 +1,4 @@
-package mypackage;
+package com.accenture.service;
 
 
 import org.apache.log4j.Logger;

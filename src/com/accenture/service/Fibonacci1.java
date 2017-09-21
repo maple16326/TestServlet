@@ -1,4 +1,4 @@
-package mypackage;
+package com.accenture.service;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -21,10 +21,11 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import xml.FibonacciSequenceRequest;
-import xml.FibonacciSequenceResponse;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+
+import com.accenture.xml.FibonacciSequenceRequest;
+import com.accenture.xml.FibonacciSequenceResponse;
 
 public class Fibonacci1 implements Problem {
 	BufferedReader in = null;

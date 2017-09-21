@@ -1,4 +1,4 @@
-package xml;
+package com.accenture.xml;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAttribute;

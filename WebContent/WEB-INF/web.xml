@@ -3,15 +3,15 @@
   <display-name>myservlet</display-name>
   <servlet>
     <servlet-name>FibonacciServlet</servlet-name>
-    <servlet-class>com.servlet.FibonacciServlet</servlet-class>
+    <servlet-class>com.accenture.myservlet.FibonacciServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>JosephServlet</servlet-name>
-    <servlet-class>com.servlet.JosephServlet</servlet-class>
+    <servlet-class>com.accenture.myservlet.JosephServlet</servlet-class>
   </servlet>
    <servlet>
     <servlet-name>JosephServletJson</servlet-name>
-    <servlet-class>com.servlet.JosephServletJson</servlet-class>
+    <servlet-class>com.accenture.myservlet.JosephServletJson</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>FibonacciServlet</servlet-name>

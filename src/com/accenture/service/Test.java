@@ -1,4 +1,4 @@
-package mypackage;
+package com.accenture.service;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
