@@ -90,10 +90,10 @@ function sub() {
 		type : "post",
 		dataType : "json",
 		contentType : "application/json;char-set=utf-8",
-		url : "josephservletjson",
+		url : "josephservlettest",
 		data : encoded,
 		success : function(data, textStatus) {
-			$("#result").val(data.lastPeople);
+			$("#result").val(data.person);
 			var objs = eval(data); // 解析json对象
 			var obj = objs[0];
 		

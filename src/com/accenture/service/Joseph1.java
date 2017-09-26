@@ -28,7 +28,6 @@ import com.accenture.xml.JosephProblemResponse;
 public class Joseph1 implements Problem {
 	private static final Logger LOGGER = Logger.getLogger(Joseph1.class);
 	private static final String LOG4J_PROPERTIES = "log4j.properties";
-
 	public void solve(String inputFilePath, String outputDirPath) {
 		BufferedReader in = null;
 		PrintWriter out = null;
@@ -49,7 +48,7 @@ public class Joseph1 implements Problem {
 			Marshaller mar1 = context1.createMarshaller();
 			StringWriter writer = new StringWriter();
 			try {
-				josephProblemResponse.setPeople(joseph(
+				josephProblemResponse.setPeople(solveJosephProblem(
 						josephProblemRequest.getCircle().getPeoples(),
 						josephProblemRequest.getCircle().getInterval(),
 						josephProblemRequest.getCircle().getStartNo()));
@@ -82,12 +81,17 @@ public class Joseph1 implements Problem {
 
 	}
 
-	public String joseph(String[] arr1, int interval, int startNo)
+	/**
+	 * Using ArrayList to solve Joseph problem 
+	 * @param persons 
+	 * @param interval
+	 * @return lastPerson
+	 */
+	public String solveJosephProblem(String[] persons, int interval, int startNo)
 			throws Exception {
-		//PropertyConfigurator.configure(LOG4J_PROPERTIES);
-		if (arr1 != null && interval > 0 && startNo >= 0) {
+		if (persons != null && interval > 0 && startNo >= 0) {
 			List<String> start = new ArrayList<String>();
-			start.addAll(Arrays.asList(arr1));
+			start.addAll(Arrays.asList(persons));
 			int k = startNo - 1;
 			LOGGER.info(start);
 			while (start.size() > 1) {
@@ -106,16 +110,13 @@ public class Joseph1 implements Problem {
 			LOGGER.info("the last element is:" + start.get(0));
 
 			return start.get(0);
-		} else if (arr1 == null) {
+		} else if (persons == null) {
 			throw new IllegalArgumentException("Array cannot be null");
 
 		} else if (interval <= 0) {
-			throw new IllegalArgumentException(
-					"The interval must be greater than 0 ");
-		}
-		else {
-			throw new IllegalArgumentException(
-					"The startNo must be greater than or equal to 0");
+			throw new IllegalArgumentException("The interval must be greater than 0 ");
+		} else {
+			throw new IllegalArgumentException("The startNo must be greater than or equal to 0");
 		}
 
 	}

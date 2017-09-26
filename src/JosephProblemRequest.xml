@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<josephProblemRequest>
+    <circle interval="1" start="0">
+        <peoples>
+            <people>a</people>
+            <people>b</people>
+            <people>c</people>
+            <people>1</people>
+            <people>2</people>
+            <people>3</people>
+            <people>d</people>
+            <people>ee</people>
+        </peoples>
+    </circle>
+</josephProblemRequest>
+

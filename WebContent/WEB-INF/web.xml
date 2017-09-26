@@ -9,9 +9,13 @@
     <servlet-name>JosephServlet</servlet-name>
     <servlet-class>com.accenture.myservlet.JosephServlet</servlet-class>
   </servlet>
-   <servlet>
+  <servlet>
     <servlet-name>JosephServletJson</servlet-name>
     <servlet-class>com.accenture.myservlet.JosephServletJson</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>JosephServletTest</servlet-name>
+    <servlet-class>com.accenture.myservlet.JosephServletTest</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>FibonacciServlet</servlet-name>
@@ -24,6 +28,10 @@
   <servlet-mapping>
     <servlet-name>JosephServletJson</servlet-name>
     <url-pattern>/josephservletjson</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>JosephServletTest</servlet-name>
+    <url-pattern>/josephservlettest</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

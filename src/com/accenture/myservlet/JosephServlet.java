@@ -69,7 +69,7 @@ public class JosephServlet extends HttpServlet {
 				"<H3>"+"startIndex:"+startIndex+"</H3>\n" +
 				"</BODY></HTML>");	
 		try {
-			lastPeople = joseph.joseph(peopleArray, intervals, startIndex);
+			lastPeople = joseph.solveJosephProblem(peopleArray, intervals, startIndex);
 			out.println("</p>The last people is:"+lastPeople+"</p>");
 		} catch (Exception e) {
 		

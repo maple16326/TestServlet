@@ -31,6 +31,7 @@ public class JosephServletJson extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static final Logger LOGGER = Logger.getLogger(JosephServletJson.class);
 	public static final String LOG4JPROPERTIES = "log4j.properties";
+
 	int intervals;
 	int startNo;
 
@@ -90,7 +91,7 @@ public class JosephServletJson extends HttpServlet {
 		reader.close();
 		response.setCharacterEncoding("UTF-8");
 		Writer out = response.getWriter();
-		// å°†å‰�å�°ä¼ è¿‡æ�¥çš„æ‰€æœ‰è®°å½•çš„jsonå­—ç¬¦ä¸²å¼ºåˆ¶è½¬æ�¢æˆ�jsonå¯¹è±¡
+		
 		JSONObject jsonObject = new JSONObject(buffer.toString());
 		
 		if (checkJson(jsonObject, "persons","interval","start")) {
@@ -111,7 +112,7 @@ public class JosephServletJson extends HttpServlet {
 			String lastPeople = null;
 
 			try {
-				lastPeople = joseph.joseph(peopleArray, intervals, startNo);
+				lastPeople = joseph.solveJosephProblem(peopleArray, intervals, startNo);
 			} catch (Exception e) {
 				LOGGER.error(e.getMessage());
 			}
