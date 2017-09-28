@@ -10,9 +10,7 @@ public class RequestConverter implements Converter<JosephProblemRequest> {
 
 	@Override
 	public JosephProblemRequest fromJson(JSONObject jsonObject) {
-		//TODO Null check
 		JSONObject circleJson = jsonObject.getJSONObject("circle");
-		//JSONArray persons = circleJson.getJSONArray("persons");
 		CircleConverter circleConverter = new CircleConverter();
 		request.setCircle(circleConverter.fromJson(circleJson));
 		return request;
@@ -20,8 +18,10 @@ public class RequestConverter implements Converter<JosephProblemRequest> {
 
 	@Override
 	public JSONObject toJson(JosephProblemRequest request) {
-
-		return null;
+        JSONObject jsonObject=new JSONObject();
+        Circle circle=request.getCircle();
+        jsonObject.put("circle", circle);
+		return jsonObject;
 	}
 
 }

@@ -27,10 +27,10 @@ import org.apache.log4j.PropertyConfigurator;
 import com.accenture.xml.FibonacciSequenceRequest;
 import com.accenture.xml.FibonacciSequenceResponse;
 
-public class Fibonacci1 implements Problem {
+public class Fibonacci implements Problem {
 	BufferedReader in = null;
 	static PrintWriter out = null;
-	public static final Logger LOGGER = Logger.getLogger(Fibonacci1.class);
+	public static final Logger LOGGER = Logger.getLogger(Fibonacci.class);
 	public static final String LOG4JPROPERTIES="log4j.properties";
 
 	public void solve(String inputFilePath, String outputDirPath) {
@@ -67,26 +67,26 @@ public class Fibonacci1 implements Problem {
 								.getLength()));
 				
 			} catch (Exception e) {
-				e.printStackTrace();
-				LOGGER.error(e.getMessage());
+
+				LOGGER.error(e);
 			}
 			mar1.marshal(fibonacciSequenceResponse, writer);
 			out.println(writer.toString());
 
 		} catch (JAXBException e1) {
-			e1.printStackTrace();
-			LOGGER.error(e1.getMessage());
+
+			LOGGER.error(e1);
 		} catch (IOException e) {
-			e.printStackTrace();
-			LOGGER.error(e.getMessage());
+
+			LOGGER.error(e);
 		} finally {
 			if (in != null) {
 				try {
 					in.close();
 				} catch (IOException e) {
 
-					e.printStackTrace();
-					LOGGER.error(e.getMessage());
+					
+					LOGGER.error(e);
 					
 				}
 			}

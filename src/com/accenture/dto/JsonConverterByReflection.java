@@ -4,62 +4,118 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.accenture.JasonAnnotation.JsonAnnotation;
 
+public class JsonConverterByReflection {
 
-
-/** 
-*
-* @author yhcui E-mail:ychui@yahoo.cn 
-* @version 创建时间：Sep 25, 2017 3:20:07 PM 
-* @param
-* 类说明 
-*/
-public class JsonConverterByReflection{
-
-	public Object fromJson(JSONObject jsonObject,Class<?>clazz) throws IllegalArgumentException, IllegalAccessException {
+	public Object fromJson(JSONObject jsonObject, Class<?> clazz)
+			throws IllegalArgumentException, IllegalAccessException {
 		Constructor<?> constructor = null;
+		String jsonPropName = null;
 		try {
 			constructor = clazz.getConstructor();
 		} catch (NoSuchMethodException | SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
 			
+		} catch (Exception e) {
+
 		}
 		Object object = null;
 		try {
 			object = constructor.newInstance();
 		} catch (InstantiationException e) {
-		
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
-
 			e.printStackTrace();
-		}		
-
-		JSONObject circleJson = jsonObject.getJSONObject("circle");		
-		Field[] fields = clazz.getDeclaredFields();		
+		}
+		Field[] fields = clazz.getDeclaredFields();
 		for (Field field : fields) {
-			field.setAccessible(true);			
+			field.setAccessible(true);
+
+			/*check whether any annotation is bound to the class field.
+			  Y:jsonPropName = fieldAnno.name()
+			  N:jsonPropName = field.getName()
+			*/
+			boolean fieldHasAnno = field.isAnnotationPresent(JsonAnnotation.class);												
+			if (fieldHasAnno) {
+				JsonAnnotation fieldAnno = field.getAnnotation(JsonAnnotation.class);
+				jsonPropName = fieldAnno.name();
+			}
+
+			else {
+				jsonPropName = field.getName();
+			}
+            
 			if (String.class.equals(field.getType())) {
-				String value = (String) jsonObject.get(field.getName());				
+				String value = (String) jsonObject.get(jsonPropName);
 				field.set(object, value);
+			} else if (String[].class.equals(field.getType())) {
+
+				JSONArray persons = jsonObject.getJSONArray(jsonPropName);
+				String[]josephPersons = new String[persons.length()];
+
+				for (int i = 0; i < persons.length(); i++) {
+
+					josephPersons[i]=persons.getString(i);
+				}
+				field.set(object, josephPersons);
 			}
-			else{
-			fromJson(jsonObject.getJSONObject(field.getName()), field.getType());		
+
+			else {
+				
+				field.set(object, fromJson(jsonObject.getJSONObject(jsonPropName), field.getType()));
 			}
+
 		}
 
-		return fields;
+		return object;
 
 	}
 
+	public JSONObject toJson(Class<?> clazz,Object object) throws IllegalAccessException, IllegalArgumentException {
+		JSONObject jsonObject = new JSONObject();
+		String jsonPropName = null;
+		Field[] fields = clazz.getDeclaredFields();
+		for (Field field : fields) {
+			field.setAccessible(true);
+			/*
+			 * check whether any annotation is bound to the class field.
+			 * Y:jsonPropName = fieldAnno.name() N:jsonPropName =
+			 * field.getName()
+			 */
+			boolean fieldHasAnno = field.isAnnotationPresent(JsonAnnotation.class);
+			if (fieldHasAnno) {
+				JsonAnnotation fieldAnno = field.getAnnotation(JsonAnnotation.class);
+				jsonPropName = fieldAnno.name();
+			} else {
+				jsonPropName = field.getName();
+			}
 
-	public JSONObject toJson(JosephProblemRequest requestAndResponse) {
-	
-		return null;
+			if (String.class.equals(field.getType())) {
+				String value = (String) field.get(object);
+				jsonObject.put(jsonPropName, value);
+			} else if (String[].class.equals(field.getType())) {
+				JSONArray jsonArray = new JSONArray(); 
+				Object[] array = (Object[]) field.get(object);
+				for (int i = 0; i < array.length; i++) {
+
+					jsonArray.put(array[i]);
+
+				}
+				jsonObject.put(jsonPropName, jsonArray);
+			}
+
+			else {
+				JSONObject propertyJsonObject=toJson(field.getType(), field.get(object));		
+				jsonObject.put(jsonPropName,propertyJsonObject);
+			}
+
+		}
+
+		return jsonObject;
+
 	}
 
 }

@@ -12,8 +12,7 @@ public class CircleConverter implements Converter<Circle>{
 		String interval=jsonObject.getString("interval");
 		JSONArray persons = jsonObject.getJSONArray("persons");
 		Circle circle=new Circle();
-		String[] peopleArray = new String[persons.length()];
-		
+		String[] peopleArray = new String[persons.length()];		
 		for (int i = 0; i < persons.length(); i++) {
 			peopleArray[i] = persons.getString(i);
 		}
@@ -24,9 +23,15 @@ public class CircleConverter implements Converter<Circle>{
 	}
 
 	@Override
-	public JSONObject toJson(Circle requestAndResponse) {
-		
-		return null;
+	public JSONObject toJson(Circle circle) {
+		JSONObject jsonObject=new JSONObject();
+		String start=circle.getStart();
+		String interval=circle.getInterval();
+		String[] persons=circle.getPersons();
+		jsonObject.put("start", start);
+        jsonObject.put("interval", interval);	
+        jsonObject.put("persons", persons);
+		return jsonObject;
 	}
     
 }

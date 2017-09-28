@@ -1,8 +1,10 @@
 package com.accenture.dto;
 
+import com.accenture.JasonAnnotation.JsonAnnotation;
 
 public class JosephProblemRequest extends DataTransferObject {
-private Circle circle;
+@JsonAnnotation(name = "circle")
+	private Circle circle;
 
 public Circle getCircle() {
 	return circle;

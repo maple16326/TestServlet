@@ -54,7 +54,7 @@
 }
 
 body {
-	background-image: url("bgimage4.jpg");
+	background-image: url("../img/bgimage4.jpg");
 	background-position: 50% 30%;
 	background-repeat: no-repeat;
 }

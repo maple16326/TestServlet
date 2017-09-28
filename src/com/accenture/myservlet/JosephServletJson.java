@@ -19,8 +19,8 @@ import org.apache.log4j.PropertyConfigurator;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.accenture.service.Fibonacci1;
-import com.accenture.service.Joseph1;
+import com.accenture.service.Fibonacci;
+import com.accenture.service.Joseph;
 
 /**
  * Servlet implementation class JosephServletJson
@@ -108,7 +108,7 @@ public class JosephServletJson extends HttpServlet {
 		try {
 			intervals = Integer.parseInt(interval);
 			startNo = Integer.parseInt(startIndex);
-			Joseph1 joseph = new Joseph1();
+			Joseph joseph = new Joseph();
 			String lastPeople = null;
 
 			try {

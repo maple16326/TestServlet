@@ -25,8 +25,8 @@ import org.apache.log4j.PropertyConfigurator;
 import com.accenture.xml.JosephProblemRequest;
 import com.accenture.xml.JosephProblemResponse;
 
-public class Joseph1 implements Problem {
-	private static final Logger LOGGER = Logger.getLogger(Joseph1.class);
+public class Joseph implements Problem {
+	private static final Logger LOGGER = Logger.getLogger(Joseph.class);
 	private static final String LOG4J_PROPERTIES = "log4j.properties";
 	public void solve(String inputFilePath, String outputDirPath) {
 		BufferedReader in = null;

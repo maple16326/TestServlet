@@ -3,14 +3,15 @@ package com.accenture.dto;
 import org.json.JSONObject;
 
 public class ResponseConverter implements Converter<JosephProblemResponse> {
-	JosephProblemResponse responose;
-	String person;
-	JSONObject jsonObjectResponseResult = new JSONObject();
+
 
 	@Override
 	public JosephProblemResponse fromJson(JSONObject jsonObject) {
-
-		return null;
+		String person = null;
+        JosephProblemResponse josephProblemResponse=new JosephProblemResponse();
+        person=jsonObject.getString("person");
+        josephProblemResponse.setLastPerson(person);
+		return josephProblemResponse;
 	}
 
 	@Override
@@ -22,7 +23,9 @@ public class ResponseConverter implements Converter<JosephProblemResponse> {
 	 * com.accenture.dto.Converter#toJson(com.accenture.dto.DataTransferObject)
 	 */
 	public JSONObject toJson(JosephProblemResponse response) {
-		this.responose=response;
+		JosephProblemResponse responose=new JosephProblemResponse();
+		String person;
+		JSONObject jsonObjectResponseResult = new JSONObject();
 		person=responose.getLastPerson();
 		jsonObjectResponseResult.put("person", person);
 		return jsonObjectResponseResult;

@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.accenture.service.Fibonacci1;
-import com.accenture.service.Joseph1;
+import com.accenture.service.Fibonacci;
+import com.accenture.service.Joseph;
 
 /**
  * Servlet implementation class JosephServlet
@@ -55,7 +55,7 @@ public class JosephServlet extends HttpServlet {
 		intervals=Integer.parseInt(interval);
 		startNo=request.getParameter("startIndex");
 		startIndex=Integer.parseInt(startNo);
-		Joseph1 joseph = new Joseph1();
+		Joseph joseph = new Joseph();
 		String lastPeople = null;
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();

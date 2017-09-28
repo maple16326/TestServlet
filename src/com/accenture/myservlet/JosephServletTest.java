@@ -19,6 +19,7 @@ import com.accenture.business.Busniness;
 import com.accenture.dto.RequestConverter;
 import com.accenture.dto.JosephProblemRequest;
 import com.accenture.dto.JosephProblemResponse;
+import com.accenture.dto.JsonConverterByReflection;
 import com.accenture.dto.ResponseConverter;
 
 /**
@@ -64,7 +65,7 @@ public class JosephServletTest extends HttpServlet {
 		BufferedReader reader = request.getReader();
 		StringBuilder builder = new StringBuilder();
 		String string;
-
+		JsonConverterByReflection jsonConverterByReflection=new JsonConverterByReflection();
 		while ((string = reader.readLine()) != null) {
 			builder.append(string);
 		}
@@ -73,14 +74,30 @@ public class JosephServletTest extends HttpServlet {
 
 		JSONObject jsonObject = new JSONObject(builder.toString());
 		RequestConverter requestConverter = new RequestConverter();
-		JosephProblemRequest jsonRequest = requestConverter.fromJson(jsonObject);
+		//JosephProblemRequest jsonRequest = requestConverter.fromJson(jsonObject);
+		JosephProblemRequest jsonRequest = null;
+		
+		try {
+			jsonRequest = (JosephProblemRequest) jsonConverterByReflection.fromJson(jsonObject, JosephProblemRequest.class);
+		} catch (IllegalArgumentException | IllegalAccessException e1) {
+			
+		}
 
 		Busniness busniness = new Busniness();
 		JosephProblemResponse jsonResponse;
+		
 		try {
+			JSONObject josephResult = null;
 			jsonResponse = busniness.doJosephCalcu(jsonRequest);
 			ResponseConverter responseConverter = new ResponseConverter();
-			response.getWriter().write(responseConverter.toJson(jsonResponse).toString());
+			try {
+				josephResult=jsonConverterByReflection.toJson(JosephProblemResponse.class, jsonResponse);
+			} catch (IllegalAccessException | IllegalArgumentException e) {
+		
+				LOGGER.error(e);
+			}
+			response.getWriter().write(josephResult.toString());
+			
 		} catch (BusinessException e) {
 			LOGGER.error(e);
 		}

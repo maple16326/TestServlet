@@ -1,10 +1,13 @@
 package com.accenture.dto;
 
+import com.accenture.JasonAnnotation.JsonAnnotation;
+
 public class Circle extends DataTransferObject{
-
+    @JsonAnnotation(name = "start")
 	private String start;
-
+    @JsonAnnotation(name = "interval")
 	private String interval;
+    @JsonAnnotation(name = "persons")
 	private String [] persons;
 	public String getStart() {
 		return start;

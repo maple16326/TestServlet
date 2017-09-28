@@ -11,8 +11,11 @@
 <body>
  <p style=" font-family: Verdana, Arial;margin-left:35px;color:black;font-weight:bold">
     <%
-        List fiboList = (List)request.getAttribute("fibolist");
-        out.println("The Fibonacci Sequence is:"+fiboList);  
+        //List fiboList = (List)request.getAttribute("fibolist");
+        //out.println("The Fibonacci Sequence is:"+fiboList);  
+        
+        String M = session.getAttribute("FibonacciSequence").toString(); //从session里把a拿出来，并赋值给M 
+        out.println(M);
     %>
     </p>
 </body>

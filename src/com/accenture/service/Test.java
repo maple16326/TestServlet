@@ -22,13 +22,13 @@ public class Test {
 			if ("f".equals(args[i])) {
 				List<String> list = new ArrayList<>();
 				list = pt.property("f");
-				Problem fibo = new Fibonacci1();
+				Problem fibo = new Fibonacci();
 				String[] ss = list.toArray(new String[list.size()]);
 				fibo.solve(ss[1], ss[0]);
 			} else if ("j".equals(args[i])) {
 				List<String> list = new ArrayList<>();
 				list = pt.property("j");
-				Problem jose = new Joseph1();
+				Problem jose = new Joseph();
 				String[] ss = list.toArray(new String[list.size()]);
 				jose.solve(ss[1], ss[0]);
 			} else {
